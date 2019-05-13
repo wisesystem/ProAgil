@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ProAgil.Domain;
 
-namespace ProAgil.Repository.Data
+namespace ProAgil.Repository
 {
     public class ProAgilContext : DbContext
     {        
@@ -14,9 +14,9 @@ namespace ProAgil.Repository.Data
         public DbSet<RedeSocial> RedeSociais { get; set; }
 
         // Especificar relação de "n" para "n"
-        protected override void OnModelCreating(MoldelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<>(PalestranteEvento)
+            modelBuilder.Entity<PalestranteEvento>()
             .HasKey(PE => new {PE.EventoId, PE.PalestranteId});
 
         }
