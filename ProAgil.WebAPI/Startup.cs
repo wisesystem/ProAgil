@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -41,6 +42,7 @@ namespace ProAgil.WebAPI
                  x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
             );
             services.AddScoped<IProAgilRepository, ProAgilRepository>();            
+            services.AddAutoMapper();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddCors();
         }
