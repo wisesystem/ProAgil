@@ -118,9 +118,7 @@ export class EventosComponent implements OnInit {
       qtdPessoas: ['', [Validators.required, Validators.max(200)]],
       telefone: ['', Validators.required],
       email: ['',  [Validators.required, Validators.email]]
-
     });
-
   }
 
   onFileChange(event) {
@@ -189,7 +187,7 @@ export class EventosComponent implements OnInit {
             this.toastr.success('Editado com Sucesso!');
           },
           error => {
-            this.toastr.error(`Erro ao Inserir: ${error}`);
+            this.toastr.error(`Erro ao Editar: ${error}`);
             console.log(error);
           }
         ) ;
@@ -200,6 +198,7 @@ export class EventosComponent implements OnInit {
   }
 
   getEventos() {
+    this.dataAtual = new Date().getMilliseconds().toString();
     // this.http.get('http://localhost:5000/api/values').subscribe(response => {
     this.eventoService.getAllEvento().subscribe(
       (_eventos: Evento[]) => {
